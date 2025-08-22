@@ -1,0 +1,124 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<style>
+  div {
+    width: 300px;
+    border: 1px solid red
+  }
+
+  img {
+    float: right;
+    width: 100px;
+    height: 100px
+  }
+</style>
+<div>
+  <img src="https://img2.baidu.com/it/u=1978192862,2048448374&fm=253&fmt=auto&app=138&f=JPEG?w=504&h=50" />
+  我要实现左上角是图片，然后就是文字环绕在图片的右边，像下面的效果图一样。我要实现左上角是图片，然后就是文字环绕在图片的右边，
+  像下面的效果图一样。我要实现左上角是图片，然后就是文字环绕在图片的右边，像下面的效果图一样。我要实现左上角是图片，然后就是文
+  字环绕在图片的右边，像下面的效果图一样。我要实现左上角是图片，然后就是文字环绕在图片的右边，像下面的效果图一样。我要实现左上
+  角是图片，然后就是文字环绕在图片的右边，像下面的效果图一样。
+</div> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    /* 方法一：完全修正的skew方案 */
+    .trapezoid-skew {
+      position: relative;
+      display: inline-block;
+      padding: 12px 40px 12px 20px;
+      color: white;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin: 10px 0 10px 20px;
+      z-index: 1;
+    }
+
+    .trapezoid-skew::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #4CAF50;
+      transform: skewX(-20deg);
+      transform-origin: bottom left;
+      z-index: -1;
+    }
+
+    .trapezoid-skew span {
+      display: inline-block;
+      transform: skewX(20deg);
+    }
+
+    /* 方法三：完全修正的边框方案 */
+    .trapezoid-border {
+      position: relative;
+      display: inline-block;
+      padding: 12px 30px;
+      color: white;
+      background-color: #2196F3;
+      border: none;
+      cursor: pointer;
+      margin: 10px 0 10px 30px;
+    }
+
+    .trapezoid-border::before {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 0;
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(to bottom right,
+          transparent 0%,
+          transparent 50%,
+          #2196F3 50%,
+          #2196F3 100%);
+    }
+
+    /* 最佳方案：clip-path */
+    .trapezoid-clip {
+      display: inline-block;
+      padding: 12px 36px 12px 16px;
+      color: white;
+      background-color: #ff9800;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      /* clip-path: polygon(0% 0%,
+          100% 0%,
+          50% 100%,
+          0% 100%); */
+      /* clip-path: polygon(0% 0%,
+          calc(100% - 30px) 0%,
+          100% 50%,
+          calc(100% - 30px) 100%,
+          0% 100%); */
+      transition: background 0.3s;
+    }
+
+    .trapezoid-clip:hover {
+      background-color: #e68a00;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <button class="trapezoid-skew"><span>Skew方法</span></button>
+  <button class="trapezoid-border">Border方法</button>
+  <button class="trapezoid-clip">Clip-path方法</button> -->
+  http测试
+  <script>
+
+    fetch('http://127.0.0.1:1234').then((res) => {
+      console.log('res', res);
+    })
+  </script>
+</body>
+
+</html>
